@@ -53,12 +53,14 @@
     </Page>
 
     <SWUpdatePopup :updateEvent="swUpdateEvent"/>
+    <CanvasAnimate />
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import nprogress from 'nprogress'
+import CanvasAnimate from './CanvasAnimate.vue'
 import Home from './Home.vue'
 import Navbar from './Navbar.vue'
 import Page from './Page.vue'
@@ -67,7 +69,7 @@ import SWUpdatePopup from './SWUpdatePopup.vue'
 import { resolveSidebarItems } from './util'
 
 export default {
-  components: { Home, Page, Sidebar, Navbar, SWUpdatePopup },
+  components: { CanvasAnimate, Home, Page, Sidebar, Navbar, SWUpdatePopup },
 
   data () {
     return {
