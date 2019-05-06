@@ -69,12 +69,16 @@ export default {
   },
   mounted () {
     this.initAnimate()
+
+    window.onresize = () => {
+      this.initAnimate()
+    }
   },
   methods: {
     initAnimate () {
       const ctx = document.querySelector('canvas#sketch').getContext('2d')
-      ctx.canvas.width = document.querySelector('#app').clientWidth
-      ctx.canvas.height = document.querySelector('#app').clientHeight
+      ctx.canvas.width = document.querySelector('body').clientWidth
+      ctx.canvas.height = document.querySelector('body').clientHeight
       this.drawAnimate(ctx)
     },
 
@@ -97,11 +101,6 @@ export default {
       ctx.beginPath()
       ctx.arc(x, y, radius, 0, Math.PI * 2, true)
       ctx.fill()
-    }
-  },
-  watch: {
-    $route () {
-      this.initAnimate()
     }
   }
 }
