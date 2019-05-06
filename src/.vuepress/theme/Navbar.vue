@@ -15,7 +15,7 @@
       <span
         ref="siteName"
         class="site-name"
-        v-if="$siteTitle"
+        v-if="$siteTitle && !$site.themeConfig.noSiteTitle"
         :class="{ 'can-hide': $site.themeConfig.logo }"
       >{{ $siteTitle }}</span>
     </router-link>
@@ -26,11 +26,6 @@
         'max-width': linksWrapMaxWidth + 'px'
       }"
     >
-      <AlgoliaSearchBox
-        v-if="isAlgoliaSearch"
-        :options="algolia"
-      />
-      <SearchBox v-else-if="$site.themeConfig.search !== false"/>
       <NavLinks class="can-hide"/>
     </div>
   </header>
@@ -38,12 +33,13 @@
 
 <script>
 import SidebarButton from './SidebarButton.vue'
-import AlgoliaSearchBox from '@AlgoliaSearchBox'
-import SearchBox from './SearchBox.vue'
 import NavLinks from './NavLinks.vue'
 
 export default {
-  components: { SidebarButton, NavLinks, SearchBox, AlgoliaSearchBox },
+  components: {
+    SidebarButton,
+    NavLinks
+   },
 
   data () {
     return {
@@ -64,16 +60,6 @@ export default {
     }
     handleLinksWrapWidth()
     window.addEventListener('resize', handleLinksWrapWidth, false)
-  },
-
-  computed: {
-    algolia () {
-      return this.$themeLocaleConfig.algolia || this.$site.themeConfig.algolia || {}
-    },
-
-    isAlgoliaSearch () {
-      return this.algolia && this.algolia.apiKey && this.algolia.indexName
-    }
   }
 }
 
@@ -89,12 +75,13 @@ function css (el, property) {
 @import './styles/config.styl'
 
 $navbar-vertical-padding = 0.7rem
-$navbar-horizontal-padding = 1.5rem
+$navbar-horizontal-padding = 0
 
 .navbar
   padding $navbar-vertical-padding $navbar-horizontal-padding
   line-height $navbarHeight - 1.4rem
   position relative
+  color $white
   a, span, img
     display inline-block
   .logo
@@ -110,7 +97,6 @@ $navbar-horizontal-padding = 1.5rem
   .links
     padding-left 1.5rem
     box-sizing border-box
-    background-color white
     white-space nowrap
     font-size 0.9rem
     position absolute

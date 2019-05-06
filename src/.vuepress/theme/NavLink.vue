@@ -12,8 +12,12 @@
     :target="isMailto(link) || isTel(link) ? null : '_blank'"
     :rel="isMailto(link) || isTel(link) ? null : 'noopener noreferrer'"
   >
-    {{ item.text }}
-    <OutboundLink/>
+    <img
+      v-if="item.icon"
+      :src="item.icon"
+      :alt="item.text"
+    >
+    <span v-else>{{ item.text }}</span>
   </a>
 </template>
 

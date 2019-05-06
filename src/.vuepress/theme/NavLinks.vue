@@ -119,19 +119,28 @@ export default {
 @import './styles/config.styl'
 
 .nav-links
-  display inline-block
+  display inline-flex
+  flex-direction row
+  justify-content center
+  align-items center
+  background-color $purple
+  padding 0 1.5rem
   a
     line-height 1.4rem
     color inherit
     &:hover, &.router-link-active
-      color $accentColor
+      font-weight 500
   .nav-item
     position relative
-    display inline-block
-    margin-left 1.5rem
+    display inline-flex
+    justify-content center
+    align-items center
+    margin 0 1.5rem
     line-height 2rem
-    &:first-child
-      margin-left 0
+    a
+      display inline-flex
+      justify-content center
+      align-items center
   .repo-link
     margin-left 1.5rem
 
@@ -143,9 +152,5 @@ export default {
 @media (min-width: $MQMobile)
   .nav-links a
     &:hover, &.router-link-active
-      color $textColor
-  .nav-item > a:not(.external)
-    &:hover, &.router-link-active
-      margin-bottom -2px
-      border-bottom 2px solid lighten($accentColor, 8%)
+      font-weight 500
 </style>
