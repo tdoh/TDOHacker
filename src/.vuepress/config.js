@@ -9,10 +9,10 @@ module.exports = {
       link: '/'
     }, {
       text: '部落格',
-      link: '/blog'
+      link: '/blog/'
     }, {
       text: '活動資訊',
-      link: '/activity'
+      link: '/activity/'
     }, {
       text: 'Facebook',
       icon: '/assets/img/icon/facebook.svg',
