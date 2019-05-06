@@ -74,7 +74,7 @@ function css (el, property) {
 <style lang="stylus">
 @import './styles/config.styl'
 
-$navbar-vertical-padding = 0.7rem
+$navbar-vertical-padding = 2rem
 $navbar-horizontal-padding = 0
 
 .navbar
@@ -87,7 +87,7 @@ $navbar-horizontal-padding = 0
   .logo
     height $navbarHeight - 1.4rem
     min-width $navbarHeight - 1.4rem
-    margin-right 0.8rem
+    margin 0 2rem
     vertical-align top
   .site-name
     font-size 1.3rem
