@@ -1,6 +1,6 @@
 <template>
   <div class="home spotlight-container">
-    <header class="spotlight">
+    <header class="spotlight background-overflow">
       <div class="content">
         <img
           v-if="data.heroImage"
@@ -25,6 +25,33 @@
         </p>
       </div>
     </header>
+    <div id="next" class="spotlight team-container">
+      <h2 class="uppercase title-col">
+        <span>Members</span>
+        <span>團隊成員</span>
+      </h2>
+      <div
+        v-for="team in data.team"
+        :key="team.group"
+        class="team"
+      >
+        <h3 class="subtitle-col">
+          <span>{{ team.group.split(' ')[0] }}</span>
+          <span>{{ team.group.split(' ')[1] }}</span>
+        </h3>
+        <div class="member-container">
+          <div
+            v-for="member in team.members"
+            :key="member.name"
+            class="member"
+          >
+            <img :src="`https://www.gravatar.com/avatar/${member.emailHash}?s=200`" alt="">
+            <p>{{ member.name }}</p>
+            <p class="border-tag">{{ member.aka }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -62,5 +89,12 @@ export default {
     .content
       margin-left 0
       margin-right auto
+      padding 0
       text-shadow 0 0 1rem rgba($black, 1)
+      max-width 50%
+
+      p
+        margin 2rem 0 1rem 0
+        line-height 1.6
+        font-size 18px
 </style>
