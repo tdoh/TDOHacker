@@ -1,0 +1,49 @@
+.uppercase
+  text-transform uppercase
+
+.title-col,
+.subtitle-col
+  display inline-flex
+  flex-direction column
+  text-align center
+
+  span
+      letter-spacing 3px
+      font-weight 500
+      line-height 1.6
+
+.title-col
+  margin 3rem 0 1rem 0
+
+  span
+    font-size 20px
+
+  span+span
+    font-size 18px
+
+.subtitle-col
+  justify-content center
+  align-items center
+  background-color $white
+  color $purple
+  margin 1rem 0
+
+  &:before
+    position absolute
+    content ''
+    background-color $lightGreen
+    height 2px
+    width 100%
+    z-index 0
+
+  span
+    z-index 1
+    font-size 18px
+    background-color inherit
+    padding 4px 2rem
+    padding-bottom 0
+
+  span+span
+    font-size 16px
+    padding 0 2rem
+
