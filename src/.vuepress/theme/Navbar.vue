@@ -84,6 +84,7 @@ $navbar-horizontal-padding = 0
   color $white
   a, span, img
     display inline-block
+    text-decoration none
   .logo
     height $navbarHeight - 1.4rem
     min-width $navbarHeight - 1.4rem
