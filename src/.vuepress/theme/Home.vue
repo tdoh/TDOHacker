@@ -82,6 +82,7 @@ export default {
 .home
   color: $white
   header
+    margin-top 7.5rem
     background-image url(/assets/img/security-with-code.svg)
     background-position right center
     background-repeat no-repeat
