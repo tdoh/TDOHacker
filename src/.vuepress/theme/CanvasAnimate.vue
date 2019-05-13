@@ -64,18 +64,30 @@ export default {
           radius: 120,
           alpha: 0.1
         },
-      ]
+      ],
+      bg: {
+        x: 0,
+        y: 0
+      }
     }
   },
   mounted () {
     this.initAnimate()
 
-    window.onresize = () => {
-      this.initAnimate()
-    }
+    const deviceX = document.querySelector('body').clientWidth
+    const deviceY = document.querySelector('body').clientHeight
+    document.addEventListener('mousemove', event => {
+      this.bgEffect(event.clientX, event.clientY, deviceX, deviceY)
+    })
   },
   methods: {
+    bgEffect (x, y, deviceX, deviceY) {
+      this.bg.x = (x - (deviceX / 2)) * 0.05
+      this.bg.y = (y - (deviceY / 2)) * 0.05
+    },
+
     initAnimate () {
+      window.requestAnimationFrame(this.initAnimate)
       const ctx = document.querySelector('canvas#sketch').getContext('2d')
       ctx.canvas.width = document.querySelector('body').clientWidth
       ctx.canvas.height = document.querySelector('body').clientHeight
@@ -84,7 +96,7 @@ export default {
 
     drawAnimate (ctx) {
       this.drawBackground(ctx)
-      this.circleList.forEach(ele => this.drawCircle(ctx, ele.x, ele.y, ele.radius, ele.alpha))
+      this.circleList.forEach(ele => this.drawCircle(ctx, ele.x + this.bg.x, ele.y + this.bg.y, ele.radius, ele.alpha))
     },
 
     drawBackground (ctx) {
