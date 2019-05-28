@@ -18,10 +18,12 @@
           class="action button"
           v-if="data.actionText && data.actionLink"
         >
-          <NavLink
+          <a
             class="action-button"
-            :item="actionLink"
-          />
+            @click="scrollToHook(actionLink.link)"
+          >
+            {{ actionLink.text }}
+          </a>
         </p>
       </div>
     </header>
@@ -59,6 +61,12 @@
 import NavLink from './NavLink.vue'
 
 export default {
+  data () {
+    return {
+      scrollMarginTop: 100
+    }
+  },
+
   components: { NavLink },
 
   computed: {
@@ -71,6 +79,16 @@ export default {
         link: this.data.actionLink,
         text: this.data.actionText
       }
+    }
+  },
+
+  methods: {
+    scrollToHook (id) {
+      const targetPosition = document.querySelector(id).offsetTop
+      window.scroll({
+        top: targetPosition - this.scrollMarginTop,
+        behavior: 'smooth'
+      })
     }
   }
 }
