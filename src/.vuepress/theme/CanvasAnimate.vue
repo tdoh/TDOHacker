@@ -74,8 +74,8 @@ export default {
   mounted () {
     this.initAnimate()
 
-    const deviceX = document.querySelector('body').clientWidth
-    const deviceY = document.querySelector('body').clientHeight
+    const deviceX = document.querySelector('#app').clientWidth
+    const deviceY = document.querySelector('#app').clientHeight
     document.addEventListener('mousemove', event => {
       this.bgEffect(event.clientX, event.clientY, deviceX, deviceY)
     })
@@ -89,8 +89,8 @@ export default {
     initAnimate () {
       window.requestAnimationFrame(this.initAnimate)
       const ctx = document.querySelector('canvas#sketch').getContext('2d')
-      ctx.canvas.width = document.querySelector('body').clientWidth
-      ctx.canvas.height = document.querySelector('body').clientHeight
+      ctx.canvas.width = document.querySelector('#app').clientWidth
+      ctx.canvas.height = document.querySelector('#app').clientHeight
       this.drawAnimate(ctx)
     },
 
