@@ -38,6 +38,10 @@
 
     <Home v-else-if="$page.frontmatter.home"/>
 
+    <Blog v-else-if="$page.frontmatter.blog"/>
+
+    <Activity v-else-if="$page.frontmatter.activity"/>
+
     <Page
       v-else
       :sidebar-items="sidebarItems"
@@ -61,7 +65,9 @@
 import Vue from 'vue'
 import nprogress from 'nprogress'
 import CanvasAnimate from './CanvasAnimate.vue'
-import Home from './Home.vue'
+import Home from './pages/Home.vue'
+import Blog from './pages/Blog.vue'
+import Activity from './pages/Activity.vue'
 import Navbar from './Navbar.vue'
 import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
@@ -69,7 +75,7 @@ import SWUpdatePopup from './SWUpdatePopup.vue'
 import { resolveSidebarItems } from './util'
 
 export default {
-  components: { CanvasAnimate, Home, Page, Sidebar, Navbar, SWUpdatePopup },
+  components: { CanvasAnimate, Home, Blog, Activity, Page, Sidebar, Navbar, SWUpdatePopup },
 
   data () {
     return {

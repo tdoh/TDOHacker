@@ -1,5 +1,5 @@
 <template>
-  <div class="home spotlight-container">
+  <div class="home main spotlight-container">
     <header class="spotlight background-overflow">
       <div class="content">
         <img
@@ -58,16 +58,12 @@
 </template>
 
 <script>
-import NavLink from './NavLink.vue'
-
 export default {
   data () {
     return {
       scrollMarginTop: 100
     }
   },
-
-  components: { NavLink },
 
   computed: {
     data () {
@@ -93,27 +89,3 @@ export default {
   }
 }
 </script>
-
-<style lang="stylus" scoped>
-@import './styles/config.styl'
-
-.home
-  color: $white
-  header
-    margin-top 7.5rem
-    background-image url(/assets/img/security-with-code.svg)
-    background-position right center
-    background-repeat no-repeat
-
-    .content
-      margin-left 0
-      margin-right auto
-      padding 0
-      text-shadow 0 0 1rem rgba($black, 1)
-      max-width 50%
-
-      p
-        margin 2rem 0 1rem 0
-        line-height 1.6
-        font-size 18px
-</style>
